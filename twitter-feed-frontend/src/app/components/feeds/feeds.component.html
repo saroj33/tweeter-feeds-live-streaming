@@ -15,15 +15,15 @@
     </table>-->
 
 <div class="main-wall">
-<div class="container extra-con">Live streaming tweeter feeds using socket.io as websockets, node.js as backend and angular as frontend</div>
-<div class="scrollable-tweets" id="tweets-scroll">
-<div *ngFor="let item of messages " class="container">
-	<div class="image-name-bind">
-    <img src="{{item.userImage}}" class="float-left img-profil" height="30" width="30" />
-    <span class="name-on-side"><p>{{item.userName}}</p></span>
-    <div class=tweets-area>{{item.text}}
+    <div class="container extra-con">Live streaming tweeter feeds using socket.io as websockets, node.js as backend and angular as frontend</div>
+    <div class="scrollable-tweets" id="tweets-scroll">
+        <div *ngFor="let item of messages " class="container">
+            <div class="image-name-bind">
+                <img src="{{item.userImage}}" class="float-left img-profil" height="30" width="30" />
+                <span class="name-on-side"><p>{{item.userName}}</p></span>
+                <div class=tweets-area>{{item.text}}
+                </div>
+            </div>
+        </div>
     </div>
-</div>
-  </div>
-</div>
 </div>

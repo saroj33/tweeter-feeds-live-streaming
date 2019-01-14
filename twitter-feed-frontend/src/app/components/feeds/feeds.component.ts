@@ -20,7 +20,8 @@ message;
 
   ngOnInit() {
   this.connection = this.feedService.getMessages().subscribe(message => { 
-  this.messages.push(JSON.parse(message.toString())); 
+    this.messages.splice(0, this.messages.length-20);
+    this.messages.push(JSON.parse(message.toString())); 
   })
   }
 }

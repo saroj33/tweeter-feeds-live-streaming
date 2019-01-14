@@ -21,30 +21,40 @@ io.on('connection', function(socket){
 });
 
 
-var watchList = ['love', 'hate'];
+watchList = ['angular7','java','react'];
 nconf.file({ file: 'config.json' }).env();
  const T = new Twit({
   consumer_key: nconf.get('TWITTER_CONSUMER_KEY'),
   consumer_secret: nconf.get('TWITTER_CONSUMER_SECRET'),
   access_token: nconf.get('TWITTER_ACCESS_TOKEN'),
   access_token_secret: nconf.get('TWITTER_ACCESS_TOKEN_SECRET'),
-  timeout_ms:1*1000,
 });
 
 io.sockets.on('connection', function (socket) {
   console.log('Connected');
-
+var stream = T.stream('statuses/filter', { track: watchList })
+streamerTwitter(io,stream);
 //receive the sockets add message
 socket.on('addMessage', function (addMessage) {
     //console.log(addMessage);
     if(addMessage.length>0){
-      watchList=addMessage.split(',');
+      var oldWatchList=watchList;
+          watchList=addMessage.split(',');
+          console.log(oldWatchList);
+          console.log(watchList);
+          stream.stop();
+          
+          stream = T.stream('statuses/filter', { track: watchList })
+          streamerTwitter(io,stream);
+ 
     }
+ });
+ 
+    
+ });
 
-  });
- var stream = T.stream('statuses/filter', { track: watchList })
-
-  stream.on('tweet', function (tweet) {
+function streamerTwitter(io,stream){
+    stream.on('tweet', function (tweet) {
     //console.log(tweet);
     var tweetData={ 
                     text:tweet.text, 
@@ -52,9 +62,8 @@ socket.on('addMessage', function (addMessage) {
                     userImage:tweet.user.profile_image_url, 
                     created:tweet.user.created_at
                   };
-    //console.log(tweetData);
     io.sockets.emit('stream',JSON.stringify(tweetData));
 
 
-  });
- });
+  }); 
+}
