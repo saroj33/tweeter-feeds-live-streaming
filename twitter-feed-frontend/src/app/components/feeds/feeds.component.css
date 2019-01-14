@@ -1,0 +1,55 @@
+.float-left{
+	float:left;
+	margin-right: 5px;
+}
+.name-on-side{
+	color: #365899;
+	font-weight: 600;
+	font-size: 15px;
+}
+.tweets-area{
+	font-size: 12px;
+	font-weight: normal;
+	line-height: 1.38;
+	margin-left: 20px;
+}
+.container{
+	margin-bottom: 20px;
+	background-color: white;
+	width: 100%;
+	border-radius: 10px;
+	box-shadow: 10px 10px 5px grey;
+	padding-left: 5px !important;
+}
+
+.main-wall{
+	background-color: lightblue;
+	width: 100%;
+	padding-top: 10px;
+	margin-top: 5px;
+	padding-bottom: 10px;
+	height:100vh;
+	border-radius: 10px;
+	box-shadow: 10px 10px 5px grey;
+}
+.scrollable-tweets{
+	overflow: auto;
+	max-height: 100vh;
+	margin-left: 15px;
+}
+.extra-con{
+	color: white;
+	font-weight: 600;
+	font-size: 20px;
+	background-color: black;
+	margin-bottom: 10px;
+	border-radius: 2px;
+	box-shadow: 5px 5px 5px grey;
+}
+.image-name-bind{
+	padding: 5px 0px 5px 0px;
+}
+.img-profil{
+	border-radius: 50px;
+	box-shadow: 5px 5px 5px grey;
+}

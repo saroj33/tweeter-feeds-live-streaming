@@ -1,0 +1,15 @@
+<nav class="navbar navbar-expand navbar-dark bg-dark" style="border-radius: 10px; box-shadow: 10px 2px 5px grey;">
+        <a href="/" class="navbar-brand">Home</a>
+        <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+
+            <form action="#" method="post" class="form-inline my-2 mylg-0">
+                <input (input)="tweetFilter=$event.target.value" maxlength="100" size="100" type="search" name="tweetFilter" id="tweetFilter" class="form-control mr-sm-2" placeholder="e.g love, #hate" aria-label="Buscar">
+                <button class="btn btn-outline-success" type="submit" (click)="applyFilter()">Filter</button>
+            </form>
+        </div>
+
+    </nav>

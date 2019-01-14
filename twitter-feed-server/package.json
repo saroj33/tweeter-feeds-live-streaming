@@ -1,0 +1,21 @@
+{
+  "name": "twitterfeed",
+  "version": "1.0.0",
+  "description": "First MEAN stack test",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app"
+  },
+  "dependencies": {
+    "body-parser": "~1.17.2",
+    "cors": "~2.8.3",
+    "express": "~4.15.3",
+    "lodash": "^3.3.1",
+    "mongoose": "~4.11.0",
+    "nconf": "^0.7.1",
+    "socket.io": "^2.2.0",
+    "twit": "^1.1.20"
+  },
+  "author": "saroj33@github",
+  "license": "ISC"
+}
