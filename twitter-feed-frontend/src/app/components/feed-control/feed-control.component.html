@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand navbar-dark bg-dark" style="border-radius: 10px; box-shadow: 10px 2px 5px grey;">
+<nav class="navbar navbar-expand navbar-dark bg-dark" style="border-radius: 10px; background-color: #000 !important;">
         <a href="/" class="navbar-brand">Home</a>
         <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false">
             <span class="navbar-toggler-icon"></span>
@@ -6,8 +6,8 @@
 
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
 
-            <form action="#" method="post" class="form-inline my-2 mylg-0">
-                <input (input)="tweetFilter=$event.target.value" maxlength="100" size="100" type="search" name="tweetFilter" id="tweetFilter" class="form-control mr-sm-2" placeholder="e.g angular7,java,react" aria-label="Buscar">
+            <form action="#" method="post" class="form-inline my-2 mylg-0 feed-control-form-width">
+                <input (input)="tweetFilter=$event.target.value" type="search" name="tweetFilter" id="tweetFilter" class="form-control mr-sm-2 input-cust-width" placeholder="e.g angular7,java,react" aria-label="Buscar">
                 <button class="btn btn-outline-success" type="submit" (click)="applyFilter()">Filter</button>
             </form>
         </div>

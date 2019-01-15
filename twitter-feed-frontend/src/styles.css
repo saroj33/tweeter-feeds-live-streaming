@@ -1,2 +1,15 @@
 /* You can add global styles to this file, and also import other style files */
 @import "~bootstrap/dist/css/bootstrap.css";
+@keyframes animatedBackground {
+	from { background-position: 0 0; }
+	to { background-position: 100% 0; }
+}
+
+body {
+ background-image: url("src/assets/sky-nature.jpg");
+ background-color: #cccccc;
+ background-size: cover;
+ background-position: 0% 0;
+ background-repeat: repeat-x;
+ animation: animatedBackground 100s linear infinite alternate;
+}

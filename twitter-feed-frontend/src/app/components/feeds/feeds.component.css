@@ -26,15 +26,14 @@
 	background-color: lightblue;
 	width: 100%;
 	padding-top: 10px;
-	margin-top: 5px;
+	margin-top: 80px;
 	padding-bottom: 10px;
 	height:100vh;
 	border-radius: 10px;
-	box-shadow: 10px 10px 5px grey;
 }
 .scrollable-tweets{
 	overflow: auto;
-	max-height: 100vh;
+	max-height: 90vh;
 	margin-left: 15px;
 }
 .extra-con{

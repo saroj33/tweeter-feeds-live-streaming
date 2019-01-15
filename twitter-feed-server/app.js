@@ -13,15 +13,7 @@ app.get('/', function (req, res) {
 res.send('no direct access');
 });
 
-io.on('connection', function(socket){
-  console.log('a user connected');
-  socket.on('disconnect', function(){
-    console.log('user disconnected');
-  });
-});
-
-
-watchList = ['angular7','java','react'];
+watchList = ['python','java'];
 nconf.file({ file: 'config.json' }).env();
  const T = new Twit({
   consumer_key: nconf.get('TWITTER_CONSUMER_KEY'),
@@ -31,29 +23,34 @@ nconf.file({ file: 'config.json' }).env();
 });
 
 io.sockets.on('connection', function (socket) {
-  console.log('Connected');
+  console.log(`Socket ${socket.id} connected.`);
 var stream = T.stream('statuses/filter', { track: watchList })
-streamerTwitter(io,stream);
+streamerTwitter(io,stream,socket.id);
 //receive the sockets add message
 socket.on('addMessage', function (addMessage) {
     //console.log(addMessage);
     if(addMessage.length>0){
-      var oldWatchList=watchList;
-          watchList=addMessage.split(',');
+      var oldWatchList=watchList.join(',');
+      if(oldWatchList!==addMessage.replace(/\s/g,'')){
+          watchList=addMessage.replace(/\s/g,'').split(',');
           console.log(oldWatchList);
           console.log(watchList);
           stream.stop();
           
           stream = T.stream('statuses/filter', { track: watchList })
-          streamerTwitter(io,stream);
- 
+          streamerTwitter(io,stream,socket.id);
+      }
     }
- });
- 
+    
     
  });
+ 
+ socket.on('disconnect', function(){
+    console.log(`Socket ${socket.id} disconnected.`);
+  });   
+ });
 
-function streamerTwitter(io,stream){
+function streamerTwitter(io,stream,socketId){
     stream.on('tweet', function (tweet) {
     //console.log(tweet);
     var tweetData={ 
@@ -62,7 +59,7 @@ function streamerTwitter(io,stream){
                     userImage:tweet.user.profile_image_url, 
                     created:tweet.user.created_at
                   };
-    io.sockets.emit('stream',JSON.stringify(tweetData));
+    io.sockets.to(socketId).emit('stream',JSON.stringify(tweetData));
 
 
   }); 
