@@ -24,6 +24,7 @@ nconf.file({ file: 'config.json' }).env();
 
 io.sockets.on('connection', function (socket) {
   console.log(`Socket ${socket.id} connected.`);
+watchList = ['python','java'];
 var stream = T.stream('statuses/filter', { track: watchList })
 streamerTwitter(io,stream,socket.id);
 //receive the sockets add message
