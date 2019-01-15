@@ -20,7 +20,7 @@ Now cd inside the twitter-feed-frontend.
 
 Run "npm install".
 
-Now run "ng serve --port 3333" http://localhost:3333 . 
+Now run "ng serve --port 3333" and visit http://localhost:3333 . 
 
 
 References and may be some part of code used:
