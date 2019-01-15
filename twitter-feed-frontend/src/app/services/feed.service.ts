@@ -10,16 +10,19 @@ import * as io from 'socket.io-client';
 export class FeedService {
    private url = 'http://localhost:3000'; 
    private socket;
-
+   private socketId;
   constructor() { }
 
   sendMessage(message){ 
-  	this.socket.emit('addMessage', message); 
+  	this.socket.emit('addMessage', message,this.socketId); 
   }
 
   getMessages() { 
   	let observable = new Observable(observer => { 
   		this.socket = io(this.url); 
+                this.socket.on('socket_id', (data) => {
+   		this.socketId=data;
+                }); 
   		this.socket.on('stream', (data) => {
    		observer.next(data);
     }); 
